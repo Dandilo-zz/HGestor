@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /hgestor/
+
+# Nao redireciona requisicoes POST (evita perda de dados em formularios e login)
+RewriteCond %{REQUEST_METHOD} !POST
+# Redireciona requisicoes directas de paginas .php para a versao sem extensao
+RewriteCond %{THE_REQUEST} \ /hgestor/([^\ ]+)\.php [NC]
+RewriteRule ^([^\ ]+)\.php$ %1 [R=301,L,NE]
+
+# Se a URL sem extensao correspondente a um arquivo .php for requisitada, serve internamente
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\ ]+)$ $1.php [L]
