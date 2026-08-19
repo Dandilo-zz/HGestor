@@ -89,6 +89,8 @@ hgestor/
 ├── .htaccess                   # Regras de reescrita de URL e segurança Apache
 ├── index.php                   # Ponto de entrada / roteador da aplicação
 ├── README.md                   # Documentação detalhada do projeto
+├── database/                   # Scripts de banco de dados
+│   └── schema.sql              # Script DDL/DML completo de instalação
 ├── acoes/                      # Processamentos de backend e endpoints assíncronos
 │   ├── autenticar.php
 │   ├── exportar.php
@@ -135,13 +137,20 @@ hgestor/
    - No XAMPP (Windows): coloque a pasta em `C:\xampp\htdocs\hgestor`
 
 3. **Configurar o Banco de Dados:**
-   - Crie a base de dados no MySQL/MariaDB.
-   - Configure as credenciais de acesso no arquivo [config/conexao.php](config/conexao.php):
+   - Importe o script de instalação localizado em [`database/schema.sql`](database/schema.sql) no seu servidor MySQL/MariaDB:
+     ```bash
+     mysql -u root -p < database/schema.sql
+     ```
+     *(Ou crie a base `hgestor` no **phpMyAdmin** e importe o arquivo `database/schema.sql`).*
+   - O script já cria a estrutura completa de tabelas e insere os dados iniciais:
+     - **Usuário Admin padrão:** `admin`
+     - **Senha padrão:** `admin12345`
+   - Ajuste as credenciais de acesso no arquivo [config/conexao.php](config/conexao.php) caso utilize usuário/senha diferentes do padrão:
      ```php
-     define('DB_HOST', 'localhost');
-     define('DB_NAME', 'nome_do_banco');
-     define('DB_USER', 'usuario');
-     define('DB_PASS', 'senha');
+     $host    = 'localhost';
+     $db      = 'hgestor';
+     $user    = 'root';
+     $pass    = '';
      ```
 
 4. **Acessar no navegador:**
