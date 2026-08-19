@@ -29,42 +29,71 @@ O **HGestor** nasceu para facilitar o dia a dia operacional, aumentar a acuráci
 
 ---
 
-## 🚀 Módulos e Funcionalidades
+## 📸 Demonstração Visual das Interfaces
 
-### 1. 📦 Controle e Gestão de Estoque (`modulos/estoque.php`)
+### 1. 📦 Dashboard e Controle de Estoque (`modulos/estoque.php`)
+> Visão consolidada de itens com indicadores de Curva C, Acordos Comerciais, itens sem movimentação, filtros dinâmicos e controle de substituição de snapshot.
+
+![Dashboard e Estoque](assets/img/screenshots/screenshot_estoque.png)
+
 - **Painel de Saldos e Posições:** Visão consolidada de itens, lotes, validades e quantidades disponíveis.
 - **Alertas Operacionais:** Identificação de itens com estoque crítico, zerado ou com data de validade próxima ao vencimento.
 - **Filtros e Buscas Dinâmicas:** Localização rápida por código, descrição, lote ou localização física.
 - **Exportação de Dados:** Geração de relatórios operacionais em planilhas para conferências externas.
 
-### 2. 📍 Endereçamento Físico (`modulos/enderecamento.php`)
+---
+
+### 2. 🛒 Gestão de Pedidos de Compras (`modulos/compras.php`)
+> Sugestão automática de compras baseada em consumo médio mensal e cobertura de estoque, com suporte a exportação em PDF e integração com solicitações Fluig.
+
+![Pedido de Compras](assets/img/screenshots/screenshot_compras.png)
+
+- **Acompanhamento de Pedidos:** Registro e monitoramento do status de requisições e pedidos de compra.
+- **Previsão de Reposição:** Apoio à tomada de decisão de compra com base nos níveis de estoque e parâmetros de consumo.
+- **Exportação de Relatórios:** Geração de pedidos formatados para envio a suprimentos.
+
+---
+
+### 3. 📍 Endereçamento Físico de Almoxarifado (`modulos/enderecamento.php`)
+> Mapeamento tridimensional (Eixo X - Rua, Eixo Y - Prateleira/Módulo, Eixo Z - Nível) para agilização do *picking* e organização física.
+
+![Endereçamento Físico](assets/img/screenshots/screenshot_enderecamento.png)
+
 - **Mapeamento Estrutural:** Cadastro e organização física por Rua, Prédio/Módulo, Nível/Andar e Vão/Posição.
 - **Vínculo de Itens:** Associação individual ou em lote de produtos e lotes a endereços específicos.
-- **Gestão de Capacidade:** Definição de parâmetros físicos de ocupação e otimização de rotas de *picking*.
-- **Controle de Parâmetros de Endereço:** Ajuste de dimensões, prioridades e regras de alocação.
+- **Gestão de Capacidade:** Definição de parâmetros físicos de ocupação e otimização de rotas de separação.
+- **Exportações Operacionais:** Geração de mapas em CSV e PDF para impressão e afixação física.
 
-### 3. 📝 Pré-Inventário e Inventário (`modulos/pre_inventario.php`)
+---
+
+### 4. 🛡️ Painel de Controle Administrativo e Governança (`modulos/admin.php`)
+> Central de diretrizes de cadastros, governança de usuários, gerenciamento de estoques autorizados, alertas globais em tempo real e auditoria com registro de logs críticos.
+
+![Painel Administrativo](assets/img/screenshots/screenshot_admin.png)
+
+- **Gestão de Usuários:** Cadastro, edição, ativação/desativação e redefinição de senhas.
+- **Controle de Acesso Baseado em Papéis (RBAC):** Definição de grupos de usuários e permissões específicas por recurso/módulo.
+- **Auditoria e Logs de Sistema:** Monitoramento dos últimos 300 eventos com classificação de severidade (🟢 `Info`, 🟡 `Warn`, 🔴 `Danger`).
+  - Eventos monitorados: `login_sucesso`, `login_falha`, `usuario_bloqueado`, `login_bloqueado`, `cadastro_realizado`, `cadastro_senha_fraca`, `cadastro_estoque_invalido`, `cadastro_login_duplicado`, `upload_csv`, `upload_csv_erro`, `reset_estoque`, `reset_parametros`, `inventario_encerrado`, `inventario_deletado`, `logout`, `admin_alterar_status`, `admin_deletar_usuario`.
+- **Filtros e Limpeza de Logs:** Filtragem por nível de criticidade e rotina de expurgo controlado.
+
+---
+
+### 5. 📝 Pré-Inventário e Inventário (`modulos/pre_inventario.php`)
 - **Ciclos de Contagem:** Criação e acompanhamento de inventários gerais ou rotativos.
 - **Bipagem em Tempo Real:** Suporte a leitores de código de barras para conferência rápida de itens e lotes.
 - **Importação/Exportação de Dados:** Processamento de planilhas de contagem e estoque nos formatos CSV, XLS e XLSX (utilizando SimpleXLS/SimpleXLSX).
 - **Análise de Divergências:** Identificação imediata de sobras e faltas antes da consolidação.
 - **Encerramento e Histórico:** Finalização segura com gravação de histórico e possibilidade de cancelamento/exclusão auditada.
 
-### 4. 🛒 Gestão de Compras (`modulos/compras.php`)
-- **Acompanhamento de Pedidos:** Registro e monitoramento do status de requisições e pedidos de compra.
-- **Previsão de Reposição:** Apoio à tomada de decisão de compra com base nos níveis de estoque e parâmetros de consumo.
+---
 
-### 5. ⚙️ Parametrização do Sistema (`modulos/parametros.php`)
+### 6. ⚙️ Parametrização do Sistema (`modulos/parametros.php`)
 - **Regras de Estoque:** Definição de estoques mínimos, estoques de segurança e pontos de pedido.
 - **Configurações Globais:** Ajustes operacionais do almoxarifado e parametrização de fluxos do sistema.
 - **Opções de Manutenção:** Rotinas controladas para reset de parâmetros e sincronização de dados.
 
-### 6. 🛡️ Painel Administrativo e Governança (`modulos/admin.php`)
-- **Gestão de Usuários:** Cadastro, edição, ativação/desativação e redefinição de senhas.
-- **Controle de Acesso Baseado em Papéis (RBAC):** Definição de grupos de usuários e permissões específicas por recurso/módulo.
-- **Auditoria e Logs de Sistema:** Monitoramento dos últimos 300 eventos com classificação de severidade (🟢 `Info`, 🟡 `Warn`, 🔴 `Danger`).
-  - Eventos monitorados: `login_sucesso`, `login_falha`, `usuario_bloqueado`, `login_bloqueado`, `cadastro_realizado`, `cadastro_senha_fraca`, `cadastro_estoque_invalido`, `cadastro_login_duplicado`, `upload_csv`, `upload_csv_erro`, `reset_estoque`, `reset_parametros`, `inventario_encerrado`, `inventario_deletado`, `logout`, `admin_alterar_status`, `admin_deletar_usuario`.
-- **Filtros e Limpeza de Logs:** Filtragem por nível de criticidade e rotina de expurgo controlado.
+---
 
 ### 7. 🔐 Autenticação e Segurança (`modulos/login.php`, `acoes/autenticar.php`)
 - **Proteção contra Brute Force:** Bloqueio temporário de contas após tentativas consecutivas de login inválido.
