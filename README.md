@@ -13,6 +13,8 @@ Durante anos de atuação prática como almoxarife operando sistemas corporativo
 
 Como estudante na área de desenvolvimento de software, decidi unir a experiência prática de chão de almoxarifado ao conhecimento em programação para construir uma ferramenta que resolvesse essas dores de forma direta, performática e objetiva.
 
+> **Nota de Compatibilidade:** O sistema foi estruturado e parametrizado inicialmente com base nos fluxos e relatórios do **Tasy (especialmente o módulo de ambiente Oncoclínicas)**, mas sua arquitetura flexível permite que ele seja facilmente adaptado para outros formatos de relatórios, ERPs e fluxos de almoxarifado.
+
 O **HGestor** nasceu para facilitar o dia a dia operacional, aumentar a acurácia dos estoques e servir como uma base sólida e extensível. O projeto é aberto à comunidade: sinta-se à vontade para utilizar, sugerir melhorias, reportar problemas ou contribuir com código.
 
 ---
